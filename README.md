@@ -1,4 +1,4 @@
-# Viraj Gupta — Developer Portfolio
+# Sankalp Gupta — Developer Portfolio
 
 A production-ready developer portfolio built with **Next.js (App Router) +
 TypeScript + Tailwind CSS v4**. Crimson-black tactical theme. Responsive project
