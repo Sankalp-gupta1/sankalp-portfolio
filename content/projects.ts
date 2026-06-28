@@ -1,12 +1,16 @@
 /**
  * Single source of truth for every project shown on the site.
- * Cards, the projects grid, case-study pages, the sitemap and OG images all
- * read from this array. Add a project = add an object here.
  */
 
 export type Metric = { label: string; value: string };
 
-export type ProjectStatus = "Paid product" | "Open source" | "Collaboration";
+export type ProjectStatus =
+  | "Flagship"
+  | "Open source"
+  | "Research"
+  | "Full stack"
+  | "Prototype"
+  | "Paid product";
 
 export type Project = {
   slug: string;
@@ -15,16 +19,13 @@ export type Project = {
   year: string;
   role: string;
   status: ProjectStatus;
-  /** Short blurb shown on the card. */
   summary: string;
-  /** Cover art (16:9). Generated into /public/images. */
   cover: string;
   coverAlt: string;
   tech: string[];
   links: {
     github?: string;
     demo?: string;
-    /** Achilles is a paid product, shown via demo video instead of code. */
     video?: string;
   };
   metrics: Metric[];
@@ -40,14 +41,75 @@ export type Project = {
 
 export const projects: Project[] = [
   {
+    slug: "goldilocks-ai",
+    name: "Goldilocks AI",
+    tagline: "AI-powered email intelligence and personal workflow assistant",
+    year: "2026",
+    role: "AI Engineer · Full-stack developer",
+    status: "Flagship",
+    summary:
+      "An intelligent email and productivity assistant that understands inbox context, extracts tasks, summarizes conversations, detects priorities, and helps users manage decisions across daily workflows.",
+    cover: "/images/cover-goldilocks.svg?v=2",
+    coverAlt:
+      "AI email assistant dashboard with inbox intelligence and task extraction",
+    tech: [
+      "Python",
+      "FastAPI",
+      "Next.js",
+      "TypeScript",
+      "LLMs",
+      "RAG",
+      "Gmail API",
+      "Calendar API",
+      "PostgreSQL",
+      "Tailwind CSS",
+    ],
+    links: {
+      github: "https://github.com/Sankalp-gupta1/Goldilocks--HNI-ledger-board-SDE-",
+    },
+    metrics: [
+      { label: "Domain", value: "Email AI" },
+      { label: "Core", value: "LLM + RAG" },
+      { label: "Workflow", value: "Task extraction" },
+      { label: "Type", value: "Agentic AI" },
+    ],
+    featured: true,
+    caseStudy: {
+      problem:
+        "Modern inboxes contain tasks, decisions, deadlines, follow-ups, and important context scattered across multiple email threads. Manually reading every email and converting it into actions is slow and easy to miss.",
+      approach:
+        "I designed Goldilocks AI as an intelligent assistant that reads email context, summarizes long conversations, identifies important items, extracts actionable tasks, and helps the user understand what needs attention first.",
+      architecture: [
+        "Next.js frontend for dashboard, inbox summaries, and task views",
+        "FastAPI backend for AI orchestration and API handling",
+        "Gmail integration for fetching and processing email threads",
+        "LLM-based summarization for long email conversations",
+        "Task extraction pipeline for deadlines, follow-ups, and commitments",
+        "RAG-style context retrieval for grounding answers in user data",
+        "Database layer for storing processed summaries and extracted actions",
+      ],
+      challenges: [
+        "Email language is messy, so the system needs to separate useful action items from normal conversation.",
+        "Long threads require summarization without losing deadlines, names, or decisions.",
+        "The assistant must be useful without overwhelming the user with too many low-priority tasks.",
+      ],
+      results: [
+        "Created a strong AI productivity system around real-world inbox use cases.",
+        "Built a foundation for a personal AI operating system that can reason over private workflow context.",
+        "Demonstrated practical use of LLMs beyond simple chat by connecting them with real tools and user data.",
+      ],
+    },
+  },
+
+  {
     slug: "achilles",
     name: "Achilles",
     tagline: "White-label tactical AI assistant, shipped as a desktop app",
     year: "2026",
-    role: "Solo developer · product owner",
+    role: "Solo developer · Product Owner",
     status: "Paid product",
     summary:
-      "A premium, voice-driven AI assistant delivered to a paying client as a one-click Windows app: streaming chat, real-time web search, RAG memory, wake-word voice, and live n8n automation, fully rebrandable per buyer.",
+      "A premium, voice-driven AI assistant delivered to a paying US client as a one-click Windows desktop application with conversational AI, voice interaction, RAG memory, intelligent automation, and a futuristic assistant experience.",
     cover: "/images/achilles-orb.png",
     coverAlt:
       "The Achilles assistant interface, a glowing blue tactical orb with concentric HUD rings",
@@ -66,239 +128,220 @@ export const projects: Project[] = [
       "PyInstaller",
       "n8n",
     ],
-    // Paid product: demo video instead of source / live link.
-    // Google Drive video (must stay shared as "Anyone with the link, Viewer").
     links: {
       video:
         "https://drive.google.com/file/d/1R4GmY0C6kF3x6kmVcyM-N8fHuG4hVsOh/view?usp=sharing",
     },
     metrics: [
-      { label: "First token", value: "0.3 to 1s" },
-      { label: "Time to first TTS audio", value: "~1s" },
-      { label: "Client review", value: "5★" },
-      { label: "Rebranding", value: "Per-buyer" },
+      { label: "Client", value: "US" },
+      { label: "Platform", value: "Windows" },
+      { label: "Delivery", value: "Completed" },
+      { label: "Type", value: "White-label" },
     ],
     featured: true,
     caseStudy: {
       problem:
-        "A client wanted a personal, premium AI assistant they could run on their own PC and trigger by voice, not another browser tab. It had to feel like a product, install in one step, use their own API keys, carry their branding, and fire real automations into their existing tooling.",
+        "A US client wanted a personal, premium AI assistant they could run on their own PC and trigger through a desktop-style workflow, not another browser tab. It had to feel like a product, support voice-style interaction, carry custom branding, and connect AI responses with real automation workflows.",
       approach:
-        "I built a single FastAPI server that hosts both the API and the UI, then packaged the whole thing into a Windows executable with PyInstaller. Responses stream token by token over Server-Sent Events while text-to-speech is generated in the background and streamed inline, so the assistant starts speaking on the first sentence instead of waiting for the full reply. Every buyer facing string, name and voice is driven by a build-time config, so the same codebase rebrands into a new product in minutes.",
+        "I built a FastAPI-based AI assistant system that connects a modern desktop-style interface with LLM responses, retrieval-based memory, voice output, and automation-ready workflows. The project was designed to be polished, configurable, and deliverable as a real client-facing AI assistant rather than a basic chatbot demo.",
       architecture: [
-        "FastAPI app serving SSE chat endpoints plus the static web UI on one port",
-        "Groq (Llama 3.3 70B) for inference with primary-first multi-key failover",
-        "General and Realtime modes: Realtime extracts a clean query and runs Tavily web search before answering",
-        "FAISS vector store over learning-data files and past chats with local HuggingFace embeddings (no embedding API cost)",
-        "Inline TTS pipeline: sentences detected mid-stream, synthesized in a thread pool, streamed as base64 audio in order",
-        "WebGL/GLSL orb that animates only while speaking; React and Tailwind front-end",
-        "Per-buyer white-label config plus persistent user-data dir; n8n webhook automation for real-world actions",
-        "Packaged to a one-click Windows .exe with PyInstaller",
+        "FastAPI app serving AI assistant endpoints and application logic",
+        "Groq Llama model integration for fast LLM responses",
+        "General and realtime modes for normal conversation and web-grounded answering",
+        "FAISS vector store for retrieval-augmented memory using local embeddings",
+        "Inline TTS pipeline for converting assistant responses into spoken audio",
+        "React and Tailwind frontend with futuristic assistant interface",
+        "Automation hooks for connecting assistant commands with workflow actions",
+        "Desktop-style packaging approach for client delivery",
       ],
       challenges: [
-        "Latency: speaking only after a full response felt dead, so it now speaks on the first clause and streams audio inline.",
-        "Reliability: free-tier rate limits meant dead keys, so multi-key primary-first failover makes a dead key invisible to the user.",
-        "Data safety: an assistant that forgot everything on restart was unshippable, so a persistent per-buyer user-data directory fixed it.",
-        "Distribution: non-technical install, so it ships as a single .exe with a remote-install runbook (SmartScreen, keys, n8n demo).",
+        "Latency: voice assistants feel weak if responses arrive slowly, so the system was designed around streaming and fast response output.",
+        "Reliability: AI assistant workflows need stable API handling, fallback planning, and predictable response behavior.",
+        "Memory: the assistant needed a way to answer with context instead of behaving like a stateless chatbot.",
+        "Delivery: the project had to look and feel like a usable product, not only a basic AI demo.",
       ],
       results: [
-        "Shipped to a paying US client as a finished, installable product, and earned a 5-star review (“these guys are good and fast delivery”).",
-        "First token in 0.3 to 1s; first spoken audio about 1s after the first sentence.",
-        "Same codebase rebrands per buyer, the basis for a repeatable productized offer.",
-        "Live n8n integration: a spoken command fires a real workflow event end to end.",
+        "Successfully delivered the AI desktop assistant to a paying US client.",
+        "Built a production-ready desktop AI assistant supporting voice interaction, conversational intelligence, and retrieval-based memory.",
+        "Designed the application to be easily rebrandable for future client deployments.",
+        "Established a reusable architecture for future AI assistant products.",
       ],
     },
   },
+
   {
-    slug: "lung-care",
-    name: "Pneumonia Detection",
-    tagline: "ResNet50 plus autoencoder hybrid for chest X-ray diagnosis",
-    year: "2024",
-    role: "ML engineer · team collaboration",
-    status: "Collaboration",
+    slug: "multilingual-emotion-detection",
+    name: "Multilingual Emotion Detection",
+    tagline: "Transformer-based emotion understanding across text and facial signals",
+    year: "2025",
+    role: "AI / NLP developer",
+    status: "Research",
     summary:
-      "An end-to-end deep-learning pipeline that detects pneumonia from chest X-rays, combining an autoencoder for denoising and feature extraction with a transfer-learned ResNet50 classifier into a hybrid model.",
-    cover: "/images/cover-lung-care.svg?v=2",
-    coverAlt:
-      "Chest X-ray overlaid with a neural-network motif, representing pneumonia detection",
+      "A multilingual emotion detection system combining transformer-based text understanding with facial-emotion analysis to identify human emotions across languages and visual expressions.",
+    cover: "/images/cover-emotion-detection.jpg?v=2",
+    coverAlt: "Multilingual text and facial emotion AI visualization",
     tech: [
       "Python",
-      "TensorFlow / Keras",
-      "ResNet50",
-      "Autoencoder",
-      "Transfer learning",
+      "Transformers",
+      "NLP",
+      "Computer Vision",
+      "Hugging Face",
       "OpenCV",
-      "NumPy",
+      "Deep Learning",
+      "Scikit-learn",
     ],
-    links: { github: "https://github.com/Viraj-1810/lung-care" },
+    links: {
+      github: "https://github.com/Sankalp-gupta1/Multilingual-emotion-detection",
+    },
     metrics: [
-      { label: "Models", value: "3 (AE · ResNet50 · Hybrid)" },
-      { label: "Approach", value: "Transfer learning" },
-      { label: "Domain", value: "Medical imaging" },
-      { label: "Pipeline", value: "End to end" },
+      { label: "Mode", value: "Text + Face" },
+      { label: "AI Area", value: "NLP + CV" },
+      { label: "Model", value: "Transformer" },
+      { label: "Focus", value: "Emotion AI" },
     ],
     featured: true,
     caseStudy: {
       problem:
-        "Chest X-rays are noisy and pneumonia cues are subtle, so a single off-the-shelf classifier tends to be brittle. The goal was a robust, reproducible pipeline, from data loading through training to inference, rather than a one-off notebook.",
+        "Emotion detection becomes difficult when users communicate in different languages, informal text, mixed language, sarcasm, and facial expressions. A single-language or single-modal model cannot understand the full emotional context.",
       approach:
-        "I structured the project into clean, swappable modules (data, models, training, utils) and implemented three approaches: an autoencoder for denoising and feature extraction, a ResNet50 classifier with a custom head via transfer learning, and a hybrid that fuses the autoencoder features with ResNet50 for the strongest signal. Each model has its own training entry point and shared evaluation and visualization utilities.",
+        "I built a system that uses transformer-based language understanding for multilingual text and computer vision for facial expression analysis, creating a stronger emotion-detection pipeline for both text and visual signals.",
       architecture: [
-        "Autoencoder for image denoising and compact feature extraction",
-        "ResNet50 (ImageNet pre-trained) with a custom classification head",
-        "Hybrid model fusing autoencoder features with ResNet50 representations",
-        "Separate training pipelines per model plus a unified main training entry point",
-        "Reusable data loader and preprocessing, plus metrics and visualization utilities",
-        "inference.py for running predictions on new chest X-rays",
+        "Text preprocessing pipeline for multilingual and mixed-language input",
+        "Transformer model for semantic emotion classification",
+        "Cosine Similarity Attention mechanism for improved emotion representation",
+        "Computer vision pipeline for facial emotion analysis",
+        "CNN and OpenCV-based facial emotion recognition for live video analytics",
+        "Streamlit and FastAPI platform for real-time interaction and analytics",
+        "Evaluation pipeline to compare predictions and improve reliability",
       ],
       challenges: [
-        "Noisy inputs degraded classification, so autoencoder denoising runs upstream of the classifier.",
-        "Limited labelled medical data, so ImageNet transfer learning replaces training from scratch.",
-        "Comparability: all three approaches sit behind a common interface so results can be measured against each other.",
+        "Mixed-language text can confuse simple keyword-based emotion detection.",
+        "Sarcasm and informal writing require deeper contextual understanding.",
+        "Facial expressions vary between people, lighting conditions, and camera quality.",
+        "Combining text emotion and visual emotion requires careful interpretation.",
       ],
       results: [
-        "A reproducible, modular deep-learning pipeline rather than a throwaway notebook.",
-        "Three comparable approaches, with the hybrid targeting the best accuracy.",
-        "Clear separation of data, models, training and inference for easy extension.",
+        "Built a research-style AI project combining NLP and Computer Vision.",
+        "Demonstrated transformer-based emotion understanding across multilingual inputs.",
+        "Integrated facial emotion recognition for live video-based emotional analytics.",
+        "Created a strong portfolio project showing human-centered AI and multimodal intelligence.",
       ],
     },
   },
+
   {
-    slug: "vscode-ai-copilot",
-    name: "VS Code AI Copilot",
-    tagline: "A privacy-friendly RAG coding copilot, as a VS Code extension",
+    slug: "autonomous-digital-newspaper",
+    name: "AI-Powered Autonomous Digital Newspaper",
+    tagline: "Multi-agent AI system for automated news brief generation",
     year: "2025",
-    role: "Solo developer",
-    status: "Open source",
+    role: "Agentic AI developer",
+    status: "Research",
     summary:
-      "A VS Code extension that answers coding questions in a sidebar chat using Groq Llama 3, and grounds answers in your own files via RAG with local HuggingFace embeddings, so there are no cloud embedding costs.",
-    cover: "/images/cover-vscode-copilot.svg?v=2",
-    coverAlt:
-      "Code editor sidebar with a retrieval graph linking documents",
+      "An autonomous AI news system that uses AI agents, APIs, summarization, strict hallucination suppression, and modular orchestration to collect, process, and generate structured digital news briefs.",
+    cover: "/images/cover-ai-news.jpg?v=2",
+    coverAlt: "Autonomous AI news agents collecting and summarizing digital information",
     tech: [
-      "TypeScript",
-      "VS Code Extension API",
+      "Python",
       "FastAPI",
-      "sentence-transformers",
-      "Groq · Llama 3",
-      "RAG",
+      "LLMs",
+      "AI Agents",
+      "Agentic Workflows",
+      "REST APIs",
+      "Prompt Engineering",
+      "Microservices",
     ],
-    links: { github: "https://github.com/Viraj-1810/VS-Code--AI-Copilot" },
+    links: {
+      github:
+        "https://github.com/Sankalp-gupta1/Multi-Agent-AI-News-brief-Summarizer",
+      demo: "https://multi-ai-agent-news-summarizer.streamlit.app/",
+    },
     metrics: [
-      { label: "Surface", value: "VS Code extension" },
-      { label: "Embeddings", value: "Local / private" },
-      { label: "Grounding", value: "RAG on your files" },
-      { label: "LLM", value: "Groq Llama 3" },
+      { label: "Architecture", value: "Multi-agent" },
+      { label: "Core", value: "LLM workflow" },
+      { label: "Focus", value: "News AI" },
+      { label: "Safety", value: "Low hallucination" },
     ],
     featured: false,
     caseStudy: {
       problem:
-        "General AI copilots answer from the model's training data, not your codebase, and cloud embeddings add cost and send your code off the machine. I wanted a copilot that answers from your own files while keeping the embedding step local and private.",
+        "Reading and summarizing large volumes of news manually is slow, repetitive, and error-prone. A useful AI news system must gather information, reason over it, summarize it clearly, and avoid hallucinated claims.",
       approach:
-        "I built a VS Code extension with a chat sidebar wired to Groq's Llama 3 for fast responses, backed by a small local FastAPI server running HuggingFace sentence-transformers for embeddings. You upload files or paste snippets; those become the retrieval corpus, and for RAG questions the assistant answers only from that context.",
+        "I implemented autonomous AI agents for data collection, summarization, and content generation. The system uses modular orchestration pipelines, structured prompts, conditional tool invocation, and temperature-controlled inference to produce reliable digital news briefs.",
       architecture: [
-        "VS Code extension (TypeScript) with a sidebar chat UI",
-        "Local FastAPI sidecar running sentence-transformers for embeddings",
-        "File upload and snippet paste populate the retrieval corpus",
-        "Groq Llama 3 for generation; context-restricted answers for RAG queries",
-        "Code completions and Q&A in one panel",
+        "Autonomous data-gathering agents for collecting news information",
+        "LLM-based summarization pipeline for converting raw content into concise briefs",
+        "Conditional tool invocation for dynamic API orchestration",
+        "Structured reasoning prompts for consistent output generation",
+        "Temperature-controlled inference for hallucination reduction",
+        "Modular microservice-style architecture for scalable AI processing",
       ],
       challenges: [
-        "Keeping code private: embeddings run locally instead of in the cloud.",
-        "Relevance: answers for RAG questions are constrained to uploaded files and snippets to avoid hallucinated APIs.",
-        "Latency: Groq inference keeps the chat responsive inside the editor.",
+        "Preventing hallucinations while summarizing fast-changing information.",
+        "Coordinating multiple AI agents without creating inconsistent outputs.",
+        "Designing prompts that keep the generated news brief structured and useful.",
       ],
       results: [
-        "A working, privacy-friendly copilot living inside the editor.",
-        "Zero cloud-embedding cost via local sentence-transformers.",
-        "Answers grounded in the developer's own files through RAG.",
+        "Built a multi-agent AI project around autonomous information processing.",
+        "Implemented modular orchestration for data collection, summarization, and generation.",
+        "Demonstrated practical Agentic AI workflows beyond simple chatbot use cases.",
       ],
     },
   },
+
   {
-    slug: "codemate-ai",
-    name: "CodeMate AI",
-    tagline: "An LLM coding assistant with memory and explain, debug and refactor modes",
-    year: "2025",
-    role: "Solo developer",
-    status: "Open source",
+    slug: "workbench-rbac",
+    name: "Workbench RBAC",
+    tagline: "Full-stack role-based access control system",
+    year: "2026",
+    role: "Full-stack developer",
+    status: "Full stack",
     summary:
-      "A Streamlit coding assistant powered by Groq's Llama 3 and LangChain that explains, debugs and refactors code, remembers earlier messages in the session, and streams responses with syntax-highlighted output.",
-    cover: "/images/cover-codemate.svg?v=2",
-    coverAlt: "Terminal and chat bubbles merged into one interface",
-    tech: ["Python", "Streamlit", "LangChain", "Groq · Llama 3", "SQLite"],
-    links: { github: "https://github.com/Viraj-1810/Codemate-AI-coding-assistant" },
-    metrics: [
-      { label: "Modes", value: "Explain · Debug · Refactor" },
-      { label: "Memory", value: "Persistent session" },
-      { label: "UX", value: "Streamed responses" },
-      { label: "Stack", value: "Streamlit + LangChain" },
+      "A production-style RBAC platform with authentication, authorization, protected routes, role permissions, admin controls, and clean full-stack architecture.",
+    cover: "/images/cover-rbac.svg?v=2",
+    coverAlt: "Role based access control dashboard with users and permissions",
+    tech: [
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Express",
+      "MongoDB",
+      "JWT",
+      "RBAC",
+      "Tailwind CSS",
     ],
-    featured: false,
-    caseStudy: {
-      problem:
-        "Pasting code into a generic chatbot loses context between turns and gives one-size-fits-all answers. I wanted a focused coding assistant with task-specific modes that remembers the conversation.",
-      approach:
-        "I built a Streamlit app with mode tabs (Explain, Debug, Refactor) on top of LangChain for conversation and memory management, with Groq's Llama 3 doing the generation. The assistant keeps persistent session memory so it remembers earlier messages, streams responses for a fluid feel, and renders syntax-highlighted code with exportable history.",
-      architecture: [
-        "Streamlit web UI with Explain, Debug and Refactor mode tabs",
-        "LangChain for conversation flow and memory management",
-        "Groq Llama 3 for generation, with streamed output",
-        "Persistent session memory (optionally backed by SQLite)",
-        "Syntax-highlighted code blocks, markdown, light/dark toggle, export",
-      ],
-      challenges: [
-        "Continuity: persistent memory so the assistant recalls earlier turns.",
-        "Task fit: separate modes tune behaviour for explaining vs debugging vs refactoring.",
-        "Feel: streamed responses keep the UI fluid instead of blocking on full replies.",
-      ],
-      results: [
-        "A focused coding assistant that holds context across a session.",
-        "Three purpose-built modes instead of a single generic prompt.",
-        "Clean, exportable, syntax-highlighted developer UX.",
-      ],
+    links: {
+      github: "https://github.com/Sankalp-gupta1/workbench-rbac",
+      demo: "https://workbench-rbac.vercel.app/",
     },
-  },
-  {
-    slug: "ai-meeting-scheduler",
-    name: "AI Meeting Scheduler",
-    tagline: "NLP-driven scheduling from group chat, as a REST API",
-    year: "2025",
-    role: "Backend / NLP developer",
-    status: "Open source",
-    summary:
-      "A Flask REST API that reads multi-user group chats, detects meeting intent and extracts availability with spaCy NLP, then schedules meetings on participant consensus, backed by MongoDB Atlas.",
-    cover: "/images/cover-meeting-scheduler.svg?v=2",
-    coverAlt: "Calendar grid connected to NLP language nodes",
-    tech: ["Python", "Flask", "MongoDB Atlas", "spaCy", "NLP", "REST API"],
-    links: { github: "https://github.com/Viraj-1810/AI-Meeting-Scheduler" },
     metrics: [
-      { label: "Interface", value: "REST API" },
-      { label: "NLP", value: "Intent + availability" },
-      { label: "Store", value: "MongoDB Atlas" },
-      { label: "Logic", value: "Consensus scheduling" },
+      { label: "Type", value: "Full stack" },
+      { label: "Security", value: "RBAC" },
+      { label: "Auth", value: "JWT" },
+      { label: "Deploy", value: "Vercel" },
     ],
     featured: false,
     caseStudy: {
       problem:
-        "Scheduling inside a group chat is manual: someone reads the thread, figures out who is free, and proposes a time. I wanted to automate that by understanding the conversation directly.",
+        "Real applications need different access levels for admins, users, and team members. Without a proper RBAC system, sensitive routes and actions become hard to secure.",
       approach:
-        "I built a Flask REST API that stores group-chat messages and runs spaCy-powered NLP to detect when people are trying to schedule a meeting and to extract dates, times and availability from natural language. It then reconciles participant availability and schedules on consensus, persisting everything in MongoDB Atlas with proper indexing.",
+        "I developed a full-stack RBAC prototype with protected routes, role checks, authentication flow, permission-based UI rendering, and admin-level control over access.",
       architecture: [
-        "Flask REST API with endpoints for messages, users, and scheduling",
-        "spaCy NLP for meeting-intent detection and availability and date-time extraction",
-        "Consensus logic to schedule once participants align",
-        "MongoDB Atlas persistence with indexing for chat and user data",
-        "Health and stats endpoints for monitoring",
+        "Next.js frontend for dashboard and protected pages",
+        "Backend API for authentication and authorization",
+        "JWT-based login session handling",
+        "Role-based permission checks for sensitive actions",
+        "Database models for users, roles, and permissions",
+        "Reusable middleware for route protection",
       ],
       challenges: [
-        "Messy natural language: spaCy extraction turns conversational text into structured times.",
-        "Group consensus: reconciling several people's availability into one slot.",
-        "Clean API surface: REST endpoints for messages, users, and scheduling that other apps can call.",
+        "Keeping frontend route protection and backend authorization consistent.",
+        "Designing clean role logic without overcomplicating the permission system.",
+        "Making the project understandable as an assignment while still looking production-ready.",
       ],
       results: [
-        "A working API that turns group-chat text into scheduled meetings.",
-        "NLP intent detection and availability extraction over multi-user conversations.",
-        "Persistent, indexed storage ready to plug into a chat front-end.",
+        "Built a complete full-stack RBAC application.",
+        "Demonstrated authentication, authorization, protected APIs, and secure UI logic.",
+        "Created a strong industry-style project useful for SDE internship and full-stack roles.",
       ],
     },
   },

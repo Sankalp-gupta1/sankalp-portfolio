@@ -2,10 +2,14 @@ import { ImageResponse } from "next/og";
 import { site } from "@/lib/site";
 
 export const alt = `${site.name} · ${site.role}`;
-export const size = { width: 1200, height: 630 };
+
+export const size = {
+  width: 1200,
+  height: 630,
+};
+
 export const contentType = "image/png";
 
-// Self-contained social card (no external assets) so builds never break.
 export default function OgImage() {
   return new ImageResponse(
     (
@@ -23,7 +27,14 @@ export default function OgImage() {
           fontFamily: "sans-serif",
         }}
       >
-        <div style={{ display: "flex", alignItems: "center", gap: 18 }}>
+        {/* Top */}
+        <div
+          style={{
+            display: "flex",
+            alignItems: "center",
+            gap: 18,
+          }}
+        >
           <div
             style={{
               width: 22,
@@ -33,23 +44,81 @@ export default function OgImage() {
               boxShadow: "0 0 24px #e11d34",
             }}
           />
-          <div style={{ fontSize: 30, color: "#a7a0a3" }}>{site.role}</div>
+
+          <div
+            style={{
+              fontSize: 30,
+              color: "#a7a0a3",
+            }}
+          >
+            {site.role}
+          </div>
         </div>
 
-        <div style={{ display: "flex", flexDirection: "column" }}>
-          <div style={{ fontSize: 84, fontWeight: 800, letterSpacing: -2 }}>
+        {/* Center */}
+        <div
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 84,
+              fontWeight: 800,
+              letterSpacing: -2,
+            }}
+          >
             {site.name}
           </div>
-          <div style={{ fontSize: 36, color: "#a7a0a3", marginTop: 16, maxWidth: 900 }}>
-            AI products that ship: LLM apps, voice assistants, and custom automation.
+
+          <div
+            style={{
+              fontSize: 36,
+              color: "#a7a0a3",
+              marginTop: 16,
+              maxWidth: 900,
+              lineHeight: 1.4,
+            }}
+          >
+            Building intelligent systems that solve real-world problems using
+            Artificial Intelligence, Agentic AI, Large Language Models,
+            Computer Vision, Retrieval-Augmented Generation, and Full-Stack
+            Engineering.
           </div>
         </div>
 
-        <div style={{ fontSize: 28, color: "#e11d34" }}>
-          {site.url.replace("https://", "")}
+        {/* Bottom */}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+          }}
+        >
+          <div
+            style={{
+              fontSize: 28,
+              color: "#e11d34",
+              fontWeight: 700,
+            }}
+          >
+            {site.url.replace("https://", "")}
+          </div>
+
+          <div
+            style={{
+              fontSize: 22,
+              color: "#8f8b8d",
+            }}
+          >
+            AI Engineer • Researcher • Problem Solver
+          </div>
         </div>
       </div>
     ),
-    { ...size },
+    {
+      ...size,
+    }
   );
 }

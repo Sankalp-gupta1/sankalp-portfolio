@@ -30,23 +30,29 @@ export default function Home() {
         <div className="flex items-end justify-between gap-4">
           <SectionHeading
             id="featured-heading"
-            eyebrow="Selected work"
-            title="Featured projects"
-            description="A paid, shipped product and a deep-learning system, plus more on the projects page."
+            eyebrow="Featured Work"
+            title="Projects & Research"
+            description="A selection of AI-powered products, intelligent systems, Large Language Model applications, Computer Vision projects, and full-stack engineering work focused on solving real-world problems."
           />
+
           <Link
             href="/projects"
             className="hidden shrink-0 text-sm font-semibold text-crimson hover:text-crimson-bright sm:inline"
           >
-            All projects →
+            View All Projects →
           </Link>
         </div>
+
         <div className="mt-10">
           <ProjectGrid projects={featured} />
         </div>
+
         <div className="mt-8 sm:hidden">
-          <Link href="/projects" className="text-sm font-semibold text-crimson">
-            All projects →
+          <Link
+            href="/projects"
+            className="text-sm font-semibold text-crimson"
+          >
+            View All Projects →
           </Link>
         </div>
       </section>

@@ -14,8 +14,9 @@ export default function Hero() {
           <div className="flex flex-wrap items-center gap-3">
             <span className="font-code inline-flex items-center gap-2 rounded-full border border-crimson-dim bg-crimson/10 px-4 py-1.5 text-sm font-medium text-crimson">
               <span className="pulse-dot h-2 w-2 rounded-full bg-crimson" />
-              Available for work
+              Open to AI / ML / Research Roles
             </span>
+
             <span className="font-code inline-flex items-center gap-2 rounded-full border border-border-strong bg-surface/60 px-4 py-1.5 text-sm text-muted backdrop-blur">
               {site.role}
             </span>
@@ -25,42 +26,55 @@ export default function Hero() {
             id="hero-heading"
             className="mt-6 text-4xl font-bold leading-tight tracking-tight sm:text-6xl"
           >
-            Hi, I&apos;m <span className="text-gradient">Viraj</span>.
+            Hi, I&apos;m{" "}
+            <span className="text-gradient">{site.name.split(" ")[0]}</span>.
           </h1>
 
           <p className="mt-5 max-w-xl text-lg font-medium text-foreground sm:text-xl">
             {site.tagline}
           </p>
-          <p className="mt-4 max-w-xl text-muted">{site.heroBio}</p>
+
+          <p className="mt-4 max-w-xl text-muted">
+            {site.heroBio}
+          </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <Link
               href="/projects"
               className="inline-flex items-center justify-center rounded-xl bg-crimson px-6 py-3 font-semibold text-background transition-colors hover:bg-crimson-bright"
             >
-              View my work
+              Explore Projects
             </Link>
+
             <Link
               href="/#contact"
               className="inline-flex items-center justify-center rounded-xl border border-border-strong px-6 py-3 font-semibold transition-colors hover:bg-surface-2"
             >
-              Get in touch
+              Contact Me
             </Link>
           </div>
 
           {/* quick proof row */}
           <dl className="mt-10 flex flex-wrap gap-x-8 gap-y-3 font-code text-sm">
             <div>
-              <dt className="text-muted">clients</dt>
-              <dd className="font-semibold text-crimson">5★ · US &amp; UK</dd>
+              <dt className="text-muted">focus</dt>
+              <dd className="font-semibold text-crimson">
+                Agentic AI · LLMs
+              </dd>
             </div>
+
             <div>
-              <dt className="text-muted">shipped</dt>
-              <dd className="font-semibold text-crimson">Achilles (paid)</dd>
+              <dt className="text-muted">building</dt>
+              <dd className="font-semibold text-crimson">
+                Intelligent Systems
+              </dd>
             </div>
+
             <div>
-              <dt className="text-muted">cert</dt>
-              <dd className="font-semibold text-crimson">AWS Developer</dd>
+              <dt className="text-muted">stack</dt>
+              <dd className="font-semibold text-crimson">
+                Python · Next.js
+              </dd>
             </div>
           </dl>
         </div>
@@ -71,6 +85,7 @@ export default function Hero() {
             aria-hidden="true"
             className="absolute -inset-4 -z-10 rounded-3xl bg-[radial-gradient(circle_at_50%_30%,rgba(0,255,102,0.25),transparent_70%)] blur-2xl"
           />
+
           <figure className="overflow-hidden rounded-2xl border border-border-strong bg-surface">
             <div className="relative aspect-[5/6]">
               <Image
@@ -82,11 +97,13 @@ export default function Hero() {
                 className="object-cover"
               />
             </div>
+
             <figcaption className="font-code flex items-center justify-between border-t border-border px-4 py-2.5 text-xs text-muted">
               <span className="flex items-center gap-1.5">
                 <span className="h-2 w-2 rounded-full bg-crimson" />
                 {site.name}
               </span>
+
               <span>{site.location.split("·")[0].trim()}</span>
             </figcaption>
           </figure>

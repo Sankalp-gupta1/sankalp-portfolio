@@ -22,22 +22,37 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
+
   title: {
     default: `${site.name} · ${site.role}`,
     template: `%s · ${site.name}`,
   },
+
   description: site.tagline,
+
   keywords: [
-    "AI developer",
-    "ML engineer",
-    "LLM apps",
-    "voice assistant",
-    "RAG",
-    "Next.js portfolio",
-    site.name,
+    "Sankalp Gupta",
+    "AI Engineer",
+    "Artificial Intelligence",
+    "Machine Learning",
+    "Large Language Models",
+    "Agentic AI",
+    "Computer Vision",
+    "Natural Language Processing",
+    "Retrieval Augmented Generation",
+    "Full Stack AI",
+    "Research Engineer",
+    "Python",
+    "Next.js",
+    "TypeScript",
+    "Deep Learning",
+    "Open Source",
+    "Portfolio",
   ],
+
   authors: [{ name: site.name, url: site.url }],
   creator: site.name,
+
   openGraph: {
     type: "website",
     url: site.url,
@@ -45,12 +60,17 @@ export const metadata: Metadata = {
     description: site.tagline,
     siteName: site.name,
   },
+
   twitter: {
     card: "summary_large_image",
     title: `${site.name} · ${site.role}`,
     description: site.tagline,
   },
-  robots: { index: true, follow: true },
+
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default function RootLayout({
@@ -65,11 +85,15 @@ export default function RootLayout({
         <MatrixRain />
         <RevealInit />
         <Intro />
+
         <a href="#main" className="skip-link">
           Skip to content
         </a>
+
         <Nav />
+
         <main id="main">{children}</main>
+
         <Footer />
       </body>
     </html>

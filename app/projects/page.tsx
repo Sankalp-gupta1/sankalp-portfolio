@@ -7,7 +7,7 @@ import { getAllProjects } from "@/lib/projects";
 export const metadata: Metadata = {
   title: "Projects",
   description:
-    "AI/ML and full-stack projects: a shipped voice assistant product, deep-learning systems, RAG copilots, and NLP tools.",
+    "Explore AI, Machine Learning, Agentic AI, Large Language Models, Computer Vision, Full-Stack AI, and research-driven software engineering projects by Sankalp Gupta.",
 };
 
 export default function ProjectsPage() {
@@ -22,13 +22,15 @@ export default function ProjectsPage() {
         <SectionHeading
           id="projects-heading"
           eyebrow="Portfolio"
-          title="Projects & case studies"
-          description="Selected AI/ML and full-stack work. Each links to a detailed case study covering the problem, architecture, and results."
+          title="Projects & Research"
+          description="A collection of AI-powered applications, intelligent systems, computer vision solutions, large language model projects, full-stack products, and research-oriented engineering work. Every project focuses on solving real-world problems using modern Artificial Intelligence."
         />
       </section>
+
       <div className="mx-auto max-w-6xl px-4 pb-10 sm:px-6">
         <ProjectGrid projects={projects} />
       </div>
+
       <ContactCTA />
     </>
   );

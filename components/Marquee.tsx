@@ -1,18 +1,22 @@
-const items = [
+ const items = [
   "Python",
+  "Machine Learning",
+  "Deep Learning",
+  "Generative AI",
+  "Agentic AI",
+  "Large Language Models",
+  "RAG Systems",
+  "LangChain",
+  "Computer Vision",
+  "Natural Language Processing",
   "FastAPI",
   "Next.js",
   "React",
   "TypeScript",
-  "LangChain",
-  "Groq · Llama 3",
-  "FAISS RAG",
-  "spaCy NLP",
-  "TensorFlow",
   "Tailwind CSS",
-  "n8n",
-  "AWS",
+  "PostgreSQL",
   "Docker",
+  "GitHub",
 ];
 
 function Group({ hidden = false }: { hidden?: boolean }) {
@@ -31,7 +35,6 @@ function Group({ hidden = false }: { hidden?: boolean }) {
   );
 }
 
-/** Infinite horizontal marquee of the core tech stack. Pauses on hover. */
 export default function Marquee() {
   return (
     <section

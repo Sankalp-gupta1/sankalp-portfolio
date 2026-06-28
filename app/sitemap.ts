@@ -4,14 +4,29 @@ import { site } from "@/lib/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const now = new Date();
-  const staticRoutes = ["", "/projects", "/about"].map((path) => ({
-    url: `${site.url}${path}`,
-    lastModified: now,
-    changeFrequency: "monthly" as const,
-    priority: path === "" ? 1 : 0.8,
-  }));
 
-  const projectRoutes = getAllSlugs().map((slug) => ({
+  const staticRoutes: MetadataRoute.Sitemap = [
+    {
+      url: site.url,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 1,
+    },
+    {
+      url: `${site.url}/projects`,
+      lastModified: now,
+      changeFrequency: "weekly",
+      priority: 0.9,
+    },
+    {
+      url: `${site.url}/about`,
+      lastModified: now,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+  ];
+
+  const projectRoutes: MetadataRoute.Sitemap = getAllSlugs().map((slug) => ({
     url: `${site.url}/projects/${slug}`,
     lastModified: now,
     changeFrequency: "monthly" as const,

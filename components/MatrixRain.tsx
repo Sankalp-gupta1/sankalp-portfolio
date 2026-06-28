@@ -2,56 +2,56 @@
 
 import { useEffect, useRef } from "react";
 
-/**
- * Animated "Matrix" digital-rain background on a fixed full-screen canvas.
- * Sits behind all content (-z-10), low opacity so text stays readable.
- * Respects prefers-reduced-motion (draws a single static frame, no loop)
- * and pauses while the tab is hidden to save CPU/battery.
- */
 export default function MatrixRain() {
   const ref = useRef<HTMLCanvasElement>(null);
 
   useEffect(() => {
     const canvas = ref.current;
     if (!canvas) return;
+
     const ctx = canvas.getContext("2d");
     if (!ctx) return;
 
     const fontSize = 16;
+
     const chars =
-      "ｱｲｳｴｵｶｷｸｹｺｻｼｽｾｿﾀﾁﾂﾃﾄﾅﾆﾇﾈ0123456789ABCDEFｦﾊﾋﾌﾍﾎ<>/\\{}[]=$#".split("");
+      "AI01LLMRAGCVNLPAGENTPYTHONNEXTFASTAPI{}[]<>/\\#$0123456789ABCDEF".split(
+        ""
+      );
+
     let drops: number[] = [];
-    let colors: string[] = [];
     let raf = 0;
     let last = 0;
 
     const resize = () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;
+
       const cols = Math.ceil(canvas.width / fontSize);
       drops = Array.from({ length: cols }, () =>
-        Math.floor((Math.random() * canvas.height) / fontSize),
-      );
-      // Each column is its own stream, half green and half blue, so the
-      // result reads as distinct interleaved blue + green rain.
-      colors = Array.from({ length: cols }, () =>
-        Math.random() < 0.5 ? "#00ff7a" : "#29c6ff",
+        Math.floor((Math.random() * canvas.height) / fontSize)
       );
     };
 
     const paint = () => {
-      // translucent fade creates the trailing tail
-      ctx.fillStyle = "rgba(5, 8, 6, 0.1)";
+      ctx.fillStyle = "rgba(3, 10, 6, 0.08)";
       ctx.fillRect(0, 0, canvas.width, canvas.height);
-      ctx.font = `${fontSize}px ui-monospace, monospace`;
+
+      ctx.font = `${fontSize}px ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace`;
+
       for (let i = 0; i < drops.length; i++) {
-        const ch = chars[(Math.random() * chars.length) | 0];
+        const char = chars[(Math.random() * chars.length) | 0];
+
         const x = i * fontSize;
         const y = drops[i] * fontSize;
-        // bright white "head" glyph, otherwise this column's stream colour
-        ctx.fillStyle = Math.random() > 0.95 ? "#eafff6" : colors[i];
-        ctx.fillText(ch, x, y);
-        if (y > canvas.height && Math.random() > 0.975) drops[i] = 0;
+
+        ctx.fillStyle = Math.random() > 0.94 ? "#d7ffe9" : "#00ff66";
+        ctx.fillText(char, x, y);
+
+        if (y > canvas.height && Math.random() > 0.975) {
+          drops[i] = 0;
+        }
+
         drops[i]++;
       }
     };
@@ -59,33 +59,20 @@ export default function MatrixRain() {
     resize();
     window.addEventListener("resize", resize);
 
-    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-    if (reduce) {
-      // one static, sparse frame — no animation loop
-      ctx.fillStyle = "#050806";
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-      paint();
-      return () => window.removeEventListener("resize", resize);
-    }
-
-    const loop = (t: number) => {
+    const loop = (time: number) => {
       raf = requestAnimationFrame(loop);
-      if (t - last < 55) return; // ~18fps: subtle + light on CPU
-      last = t;
+
+      if (time - last < 50) return;
+
+      last = time;
       paint();
     };
-    raf = requestAnimationFrame(loop);
 
-    const onVisibility = () => {
-      cancelAnimationFrame(raf);
-      if (!document.hidden) raf = requestAnimationFrame(loop);
-    };
-    document.addEventListener("visibilitychange", onVisibility);
+    raf = requestAnimationFrame(loop);
 
     return () => {
       cancelAnimationFrame(raf);
       window.removeEventListener("resize", resize);
-      document.removeEventListener("visibilitychange", onVisibility);
     };
   }, []);
 
@@ -93,7 +80,7 @@ export default function MatrixRain() {
     <canvas
       ref={ref}
       aria-hidden="true"
-      className="pointer-events-none fixed inset-0 -z-10 h-full w-full opacity-30"
+      className="pointer-events-none fixed inset-0 -z-10 h-full w-full opacity-60"
     />
   );
 }

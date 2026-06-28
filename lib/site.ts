@@ -1,71 +1,100 @@
-/**
- * Global site configuration — single source of truth for identity,
- * social links, and SEO defaults. Edit values here; nothing is hard-coded
- * in components.
- */
 export const site = {
-  name: "Viraj Gupta",
-  // Production URL (live on Vercel) — drives absolute OG/canonical URLs +
-  // sitemap via metadataBase in app/layout.tsx.
-  url: "https://virajportfolio1.vercel.app",
-  role: "AI/ML & Full-Stack Developer",
+  name: "Sankalp Gupta",
+  url: "https://sankalp-portfolio.vercel.app",
+  role: "AI Engineer • Agentic AI • Full-Stack Developer",
   tagline:
-    "I build voice assistants, LLM apps, and custom AI automation, shipped to real, paying clients across the world.",
+    "I build AI-powered products, agentic workflows, automation systems, and full-stack applications that solve real-world problems.",
   shortBio:
-    "I build production AI: retrieval augmented LLM apps, real-time voice assistants, and deep-learning systems. I turn research grade ideas into packaged products people pay for, with a 100% completion rate and 5-star reviews from international clients.",
+    "AI Engineer with hands-on experience building intelligent automation systems, LLM-powered applications, multilingual emotion intelligence, financial process automation, and scalable backend solutions using Python, FastAPI, React, SQL, REST APIs, and modern AI workflows.",
   heroBio:
-    "Computer Science graduate and freelance AI developer. I ship voice assistants, LLM apps and custom automation for real clients: fast, reliable, and built to last.",
-  email: "viraj1810@gmail.com",
+    "I work across AI engineering, backend systems, and full-stack development. My projects include Aura AI Chief of Staff, multilingual emotion detection, autonomous AI news agents, financial statement automation, RBAC systems, and a delivered freelance AI desktop assistant project.",
+  email: "sankalpgupta0011@gmail.com",
   location: "India · Remote",
-  availability: "Open to freelance projects and full-time AI/ML roles",
-  // Hero portrait.
-  photo: "/images/viraj.jpg",
+  availability:
+    "Open to AI Engineer, Full-Stack Developer, SDE, Research, and freelance AI automation opportunities",
+  photo: "/images/sankalp.jpg",
   socials: {
-    github: "https://github.com/Viraj-1810",
-    linkedin: "https://www.linkedin.com/in/viraj-gupta-825824253",
+    github: "https://github.com/Sankalp-gupta1",
+    linkedin: "",
     fiverr: "",
   },
-  // Headline numbers shown in the results band.
   stats: [
-    { label: "In client sales", value: "$250+" },
-    { label: "Order completion", value: "100%" },
-    { label: "International reviews", value: "5★" },
-    { label: "Certified Developer", value: "AWS" },
+    { label: "AI Projects", value: "10+" },
+    { label: "Freelance Delivery", value: "1+" },
+    { label: "Current Role", value: "AI Engineer" },
+    { label: "CGPA", value: "7.6" },
   ],
 } as const;
 
-/** Skills grouped for the skills section. */
 export const skillGroups: { title: string; items: string[] }[] = [
   {
-    title: "AI / ML",
+    title: "AI / Machine Learning",
     items: [
-      "LLM apps (Groq, Llama 3)",
-      "LangChain",
-      "RAG / FAISS",
-      "HuggingFace embeddings",
-      "spaCy NLP",
-      "Whisper STT",
-      "TensorFlow / Keras",
-      "ResNet50 · CV",
-      "Edge / ElevenLabs TTS",
-      "Prompt engineering",
+      "Generative AI",
+      "Large Language Models",
+      "Prompt Engineering",
+      "RAG Systems",
+      "AI Agents",
+      "Agentic Workflows",
+      "NLP",
+      "Deep Learning",
+      "Neural Networks",
+      "Model Evaluation",
+      "Vector Databases",
+      "Workflow Automation",
     ],
   },
   {
-    title: "Backend & data",
-    items: ["Python", "FastAPI", "Flask", "REST APIs", "SSE streaming", "MongoDB", "SQL", "pandas", "NumPy"],
+    title: "Backend & Data",
+    items: [
+      "Python",
+      "FastAPI",
+      "Flask",
+      "Node.js",
+      "REST APIs",
+      "SQL",
+      "MySQL",
+      "Firebase",
+      "Pandas",
+      "Scikit-learn",
+      "TensorFlow",
+      "Keras",
+    ],
   },
   {
-    title: "Frontend",
-    items: ["TypeScript", "React", "Next.js", "Tailwind CSS", "Streamlit", "WebGL / GLSL"],
+    title: "Frontend & Apps",
+    items: [
+      "React.js",
+      "Next.js",
+      "JavaScript",
+      "TypeScript",
+      "HTML",
+      "CSS",
+      "Tailwind CSS",
+      "Streamlit",
+      "Flutter",
+      "Power BI",
+    ],
   },
   {
-    title: "Languages & tooling",
-    items: ["C / C++", "Java", "Git", "Docker", "AWS", "GCP", "PyInstaller", "n8n", "Vercel"],
+    title: "Core CS & Tools",
+    items: [
+      "Data Structures",
+      "Algorithms",
+      "OOP",
+      "DBMS",
+      "Computer Networks",
+      "Git",
+      "GitHub",
+      "VS Code",
+      "Postman",
+      "Google Colab",
+      "Hugging Face",
+      "System Design",
+    ],
   },
 ];
 
-/** Work experience, newest first. Shown on the About page. */
 export const experience: {
   role: string;
   org: string;
@@ -73,47 +102,61 @@ export const experience: {
   points: string[];
 }[] = [
   {
-    role: "Freelance AI Developer",
-    org: "Fiverr",
-    period: "Jan 2026 to Present",
+    role: "AI Engineer",
+    org: "Goldilocks Tech Pvt. Ltd.",
+    period: "Jun 2026 to Present",
     points: [
-      "Build and ship custom AI assistants and automation for international clients, earning 5-star reviews for delivery speed and code quality.",
-      "$250+ in freelance sales at a 100% order completion rate across global clients.",
-      "Productized a tactical voice assistant into Achilles, a rebrandable, one-click desktop app.",
+      "Built intelligent software systems by integrating APIs, databases, and automation workflows to support large-scale business operations.",
+      "Designed and implemented data-processing pipelines that transformed raw information into actionable insights and decision-support systems.",
+      "Improved system performance, reliability, and scalability through debugging, optimization, testing, and production engineering practices.",
+      "Worked across architecture, development, testing, and deployment while focusing on automation and system intelligence.",
     ],
   },
   {
-    role: "AI Research Intern",
-    org: "Coding Jr",
+    role: "Freelance AI Developer",
+    org: "Independent Client Project",
+    period: "2025",
+    points: [
+      "Delivered an AI desktop assistant project for a freelance client with voice-style interaction, AI responses, automation-focused design, and desktop assistant experience.",
+      "Worked on requirement understanding, AI workflow design, implementation, testing, and final delivery.",
+      "Used the project to strengthen practical experience in building real AI applications beyond basic chatbot prototypes.",
+    ],
+  },
+  {
+    role: "Machine Learning Intern",
+    org: "Infotact Solutions",
     period: "May 2025 to Aug 2025",
     points: [
-      "Built AI-powered chatbots and coding assistants with Streamlit, the Groq API, and LangChain.",
-      "Shipped an AI coding assistant, a RAG based PDF chatbot, and an AI traffic prediction system.",
-      "Applied ML and prompt engineering to deploy real-time solutions for varied business use cases.",
+      "Developed an AI-based Power BI dashboard for real-time data analysis and business insights.",
+      "Applied K-Means Clustering and PCA for data cleaning, feature reduction, and pattern identification.",
+      "Built an NLP pipeline to analyze text data and improve decision-making accuracy.",
+    ],
+  },
+  {
+    role: "AI/ML Summer Trainee",
+    org: "IIIT Allahabad",
+    period: "Apr 2025 to May 2025",
+    points: [
+      "Completed structured AI/ML training with practical assignments and real-world problem solving.",
+      "Gained exposure to supervised learning, deep learning, NLP techniques, and model-building workflows.",
+      "Strengthened fundamentals of AI/ML implementation through hands-on exercises and guided projects.",
     ],
   },
 ];
 
-/** Certifications relevant to AI/ML & development. */
 export const certifications: { name: string; issuer: string; date: string }[] = [
   {
-    name: "AWS Certified Developer Associate",
-    issuer: "Infosys Springboard",
-    date: "Mar 2026",
+    name: "Software Engineer Certification",
+    issuer: "HackerRank",
+    date: "2025",
   },
   {
-    name: "Natural Language Processing for Developers",
-    issuer: "Infosys Springboard",
-    date: "Nov 2025",
-  },
-  {
-    name: "Software Engineering Job Simulation",
-    issuer: "Electronic Arts / Forage",
-    date: "Apr 2025",
+    name: "Introduction to Generative AI and Agents",
+    issuer: "Microsoft Learn",
+    date: "Oct 2025",
   },
 ];
 
-/** Real client testimonials (verbatim from Fiverr 5-star reviews). */
 export const testimonials: {
   quote: string;
   author: string;
@@ -123,24 +166,16 @@ export const testimonials: {
   tags: string[];
 }[] = [
   {
-    quote: "Mannnnn! these guys are good and fast delivery.",
-    author: "Marcus G.",
-    location: "United States",
+    quote:
+      "Delivered the AI desktop assistant project with practical functionality and clear communication.",
+    author: "Freelance Client",
+    location: "Remote",
     rating: 5,
-    service: "Voice-controlled AI desktop assistant with RAG and AI agents",
-    tags: ["Code expertise", "Delivery time", "Exceeded expectations"],
-  },
-  {
-    quote: "Great developer, easy to work with and quick responses.",
-    author: "razzalgul",
-    location: "United Kingdom",
-    rating: 5,
-    service: "Fully functional Jarvis AI assistant for PC",
-    tags: ["Proactive communication", "Quick responsiveness", "Politeness"],
+    service: "AI Desktop Assistant",
+    tags: ["AI Assistant", "Automation", "Project Delivery"],
   },
 ];
 
-/** Education, newest first. College first, then schooling. */
 export const education: {
   degree: string;
   school: string;
@@ -148,15 +183,9 @@ export const education: {
   period: string;
 }[] = [
   {
-    degree: "B.Tech, Computer Science",
-    school: "Jaypee University of Engineering and Technology",
-    location: "Guna, Madhya Pradesh",
-    period: "Aug 2022 to May 2026",
-  },
-  {
-    degree: "Schooling (CBSE)",
-    school: "Amity International School, Pushp Vihar",
-    location: "New Delhi",
-    period: "Completed 2022",
+    degree: "B.Tech, Computer Science Engineering (Artificial Intelligence)",
+    school: "CSJM University",
+    location: "Kanpur, Uttar Pradesh",
+    period: "Jun 2022 to Jun 2026 · CGPA: 7.6",
   },
 ];
