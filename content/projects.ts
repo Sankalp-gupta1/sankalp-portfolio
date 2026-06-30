@@ -41,8 +41,8 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "goldilocks-ai",
-    name: "Goldilocks AI",
+    slug: "aura-ai",
+    name: "AURA-AI",
     tagline: "AI-powered email intelligence and personal workflow assistant",
     year: "2026",
     role: "AI Engineer · Full-stack developer",
@@ -345,4 +345,91 @@ export const projects: Project[] = [
       ],
     },
   },
+
+  {
+  slug: "nl2sql-vanna-ai",
+  name: "NL2SQL using Vanna AI",
+  tagline: "AI System that converts natural language into SQL queries",
+  year: "2026",
+  role: "AI Engineer · Backend Developer",
+  status: "Flagship",
+
+  summary:
+    "An AI-powered Natural Language to SQL system that allows users to query databases using plain English instead of SQL. The application understands the user's question, generates the correct SQL query using Vanna AI, executes it on the database, and returns structured results through a FastAPI backend.",
+
+  cover: "/images/cover-nlp.jpg?v=2",
+
+  coverAlt:
+    "Natural Language to SQL system using Vanna AI, FastAPI and SQLite",
+
+  tech: [
+    "Python",
+    "FastAPI",
+    "Vanna AI",
+    "SQLite",
+    "LLMs",
+    "REST APIs",
+    "Pandas",
+    "Uvicorn",
+  ],
+
+  links: {
+    github:
+      "https://github.com/Sankalp-gupta1/nl2sql-vanna-fastapi",
+  },
+
+  metrics: [
+    {
+      label: "Input",
+      value: "Natural Language",
+    },
+    {
+      label: "Output",
+      value: "SQL Query",
+    },
+    {
+      label: "Backend",
+      value: "FastAPI",
+    },
+    {
+      label: "AI Engine",
+      value: "Vanna AI",
+    },
+  ],
+
+  featured: true,
+
+  caseStudy: {
+    problem:
+      "Organizations store huge amounts of valuable information inside relational databases, but accessing that information usually requires SQL knowledge. Business users, doctors, managers, and analysts often know what they want to ask but don't know how to write SQL queries. As a result, they depend on developers or database administrators even for simple questions, making data access slow and inefficient.",
+
+    approach:
+      "To solve this problem, I built an AI-powered Natural Language to SQL system using Vanna AI and FastAPI. Instead of writing SQL, users simply ask questions in everyday English such as 'Show all doctors', 'List today's appointments', or 'Count total patients'. The system understands the user's intent, analyzes the database schema, generates the correct SQL query, executes it on the SQLite database, and returns the results as structured JSON through REST APIs. This creates a much more natural and user-friendly way to interact with databases.",
+
+    architecture: [
+      "FastAPI backend that exposes REST APIs for natural language queries.",
+      "Vanna AI integrated as the LLM-based SQL generation engine.",
+      "SQLite database containing healthcare-related tables including doctors, patients, appointments, and treatments.",
+      "Schema-aware training module that teaches Vanna AI about the database structure before generating SQL.",
+      "Memory-based learning using example questions and SQL pairs to improve query accuracy.",
+      "Automatic SQL execution pipeline that safely runs generated queries and returns structured responses.",
+      "Interactive Swagger API interface for testing the entire system without writing frontend code.",
+    ],
+
+    challenges: [
+      "Teaching the AI model to understand custom database schemas instead of generating generic SQL.",
+      "Reducing incorrect SQL generation by providing schema training and memory examples.",
+      "Handling different ways users ask the same question while still producing accurate SQL queries.",
+      "Designing a modular backend architecture where database setup, AI configuration, memory training, and API services remain independent and reusable.",
+    ],
+
+    results: [
+      "Built a complete end-to-end AI system that converts natural language into executable SQL queries.",
+      "Successfully integrated Vanna AI with FastAPI and SQLite into a production-style backend application.",
+      "Allowed users with no SQL knowledge to retrieve database information using simple English questions.",
+      "Created a reusable architecture that can easily be extended to PostgreSQL, MySQL, enterprise databases, and business intelligence platforms.",
+      "Demonstrated practical skills in LLM integration, backend API development, database engineering, prompt-based AI systems, and software architecture.",
+    ],
+  },
+},
 ];
