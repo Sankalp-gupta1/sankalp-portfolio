@@ -104,7 +104,7 @@ export const experience: {
   {
     role: "AI Engineer",
     org: "Goldilocks Tech Pvt. Ltd.(Gurugram, India)",
-    period: "Jun 2026 to Present",
+    period: "May 2026 to Present",
     points: [
       "Built intelligent software systems by integrating APIs, databases, and automation workflows to support large-scale business operations.",
       "Designed and implemented data-processing pipelines that transformed raw information into actionable insights and decision-support systems.",
@@ -144,16 +144,23 @@ export const experience: {
   },
 ];
 
-export const certifications: { name: string; issuer: string; date: string }[] = [
+export const certifications: {
+  name: string;
+  issuer: string;
+  date: string;
+  link?: string;
+}[] = [
   {
     name: "Software Engineer Certification",
     issuer: "HackerRank",
     date: "2025",
+    link: "https://www.hackerrank.com/certificates/iframe/d09c23c87dc8",
   },
   {
     name: "Introduction to Generative AI and Agents",
     issuer: "Microsoft Learn",
     date: "Oct 2025",
+    link: "https://drive.google.com/file/d/1Z7yFWbrv7L-18S-PL2fhGfC0FIhytICE/view",
   },
 ];
 
