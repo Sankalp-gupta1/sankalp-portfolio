@@ -103,7 +103,7 @@ export const experience: {
 }[] = [
   {
     role: "AI Engineer",
-    org: "Goldilocks Tech Pvt. Ltd.",
+    org: "Goldilocks Tech Pvt. Ltd.(Gurugram, India)",
     period: "Jun 2026 to Present",
     points: [
       "Built intelligent software systems by integrating APIs, databases, and automation workflows to support large-scale business operations.",
