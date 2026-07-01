@@ -114,7 +114,7 @@ export const experience: {
   },
   {
     role: "Freelance AI Developer",
-    org: "Independent Client Project",
+    org: "Independent Client Project (Elise AI USA) ",
     period: "2025",
     points: [
       "Delivered an AI desktop assistant project for a freelance client with voice-style interaction, AI responses, automation-focused design, and desktop assistant experience.",
