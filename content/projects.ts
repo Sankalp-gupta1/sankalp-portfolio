@@ -27,6 +27,7 @@ export type Project = {
     github?: string;
     demo?: string;
     video?: string;
+    paper?: string;
   };
   metrics: Metric[];
   featured: boolean;
@@ -65,7 +66,7 @@ export const projects: Project[] = [
       "Tailwind CSS",
     ],
     links: {
-      github: "https://github.com/Sankalp-gupta1/Goldilocks--HNI-ledger-board-SDE-",
+      github: "https://github.com/Sankalp-gupta1/AURA",
     },
     metrics: [
       { label: "Domain", value: "Email AI" },
@@ -192,6 +193,7 @@ export const projects: Project[] = [
     ],
     links: {
       github: "https://github.com/Sankalp-gupta1/Multilingual-emotion-detection",
+      paper: "https://drive.google.com/file/d/1p4vQD16q_ATUYpn9sLcYVkY9HbwCbQtt/view?usp=sharing"
     },
     metrics: [
       { label: "Mode", value: "Text + Face" },
