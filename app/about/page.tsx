@@ -150,6 +150,23 @@ export default function AboutPage() {
                   <p className="mt-1 text-sm text-muted">
                     {c.issuer} · {c.date}
                   </p>
+
+                  {c.link && (
+  <a
+    href={c.link}
+    target="_blank"
+    rel="noreferrer"
+    className="mt-3 inline-flex text-sm font-semibold text-crimson hover:underline"
+  >
+    View Certificate →
+  </a>
+)}
+
+
+
+
+
+
                 </li>
               ))}
             </ul>
