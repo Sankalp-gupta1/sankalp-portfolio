@@ -147,16 +147,7 @@ export const experience: {
       "Built an NLP pipeline to analyze text data and improve decision-making accuracy.",
     ],
   },
-  {
-    role: "AI/ML Summer Trainee",
-    org: "IIIT Allahabad",
-    period: "Apr 2025 to May 2025",
-    points: [
-      "Completed structured AI/ML training with practical assignments and real-world problem solving.",
-      "Gained exposure to supervised learning, deep learning, NLP techniques, and model-building workflows.",
-      "Strengthened fundamentals of AI/ML implementation through hands-on exercises and guided projects.",
-    ],
-  },
+  
 ];
 
 export const certifications: {
