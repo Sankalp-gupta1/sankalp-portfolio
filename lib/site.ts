@@ -104,7 +104,7 @@ export const experience: {
 
 
   {
-  role: "Software Engineer Intern",
+  role: "Software Engineer",
   org: "Ambiguity Labs (Bengaluru, India)",
   period: "Jul 2026 – Present",
   points: [
@@ -117,7 +117,7 @@ export const experience: {
   },
 
   {
-    role: "AI Engineer",
+    role: "AI Engineer Intern",
     org: "Goldilocks Tech Pvt. Ltd.(Gurugram, India)",
     period: "May 2026 to July",
     points: [
