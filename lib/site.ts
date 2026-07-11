@@ -101,10 +101,25 @@ export const experience: {
   period: string;
   points: string[];
 }[] = [
+
+
+  {
+  role: "Software Engineer Intern",
+  org: "Ambiguity Labs (Bengaluru, India)",
+  period: "Jul 2026 – Present",
+  points: [
+    "Building production-grade AI systems by transforming cutting-edge research into scalable, high-performance machine learning solutions.",
+    "Designing, training, and fine-tuning deep learning models for real-world applications with a focus on accuracy, efficiency, and reliability.",
+    "Optimizing ML training and inference pipelines to improve scalability, reduce latency, and accelerate deployment.",
+    "Applying advanced AI and machine learning techniques to solve complex, ambiguous real-world problems across commercial use cases.",
+    "Collaborating on research-driven development while engineering robust algorithms and end-to-end AI workflows for production environments.",
+  ],
+  },
+
   {
     role: "AI Engineer",
     org: "Goldilocks Tech Pvt. Ltd.(Gurugram, India)",
-    period: "May 2026 to Present",
+    period: "May 2026 to July",
     points: [
       "Built intelligent software systems by integrating APIs, databases, and automation workflows to support large-scale business operations.",
       "Designed and implemented data-processing pipelines that transformed raw information into actionable insights and decision-support systems.",
